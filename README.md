@@ -8,6 +8,10 @@
 </p>
 <br/>
 
+## Integrate with React instead?
+The quickest way to integrate Jupiter with your UI, use [Jupiter React Hook instead](https://www.npmjs.com/package/@jup-ag/react-hook)
+## NodeJS or building your own library??
+Checkout [Jupiter Core Example](https://github.com/mercurial-finance/jupiter-core-example)
 
 ## Getting Started
 1. Checkout Expo getting started docs [here](https://docs.expo.dev/get-started/installation/) and setup your iOS or Android sims
