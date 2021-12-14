@@ -1,33 +1,45 @@
 import { StatusBar } from "expo-status-bar";
-import React, { useEffect } from "react";
-import { StyleSheet, Text, View } from "react-native";
+import React, { useEffect, useState } from "react";
+import { ScrollView, StyleSheet, Text, View } from "react-native";
+
+// Polyfills Web APIs
 import "./global";
-import { Jupiter } from "@jup-ag/core";
 import "react-native-url-polyfill/auto";
-import { connection } from "./connection";
+import 'text-encoding'
+
+import main from "./src/index";
+import { RouteInfo } from "@jup-ag/core";
+import { ENV } from "./src/constants";
 
 export default function App() {
+  const [routesResult, setRoutesResult] = useState<{ routesInfos: RouteInfo[]; cached: boolean; }>({ routesInfos: [], cached: false })
+
   useEffect(() => {
-    setTimeout(async () => {
-      try {
-        const slot = await connection.getSlot();
-        console.warn({ slot });
-        const jupiter = await Jupiter.load({
-          connection: connection,
-          cluster: "mainnet-beta",
-        });
-        console.warn(Object.keys(jupiter));
-      } catch (e: any) {
-        console.error(e);
+    main().then(result => {
+      if (result) {
+        setRoutesResult(result)
       }
-    }, 0);
-  }, []);
+    })
+  }, [])
 
   return (
-    <View style={styles.container}>
-      <Text>Open up App.tsx to start working on your app!</Text>
+    <ScrollView contentContainerStyle={styles.container}>
+      <Text style={{ fontWeight: '600', fontSize: 16 }}>Jupiter Core React Native example</Text>
+
+      <Text style={{ marginTop: 24 }}>
+        Environment: {ENV}
+      </Text>
+      <Text>
+        Possible number of routes: {routesResult.routesInfos.length}
+      </Text>
+      <Text>
+        Is cached?: {String(routesResult.cached)}
+      </Text>
+      <Text>
+        Best quote: {routesResult.routesInfos[0] ? routesResult.routesInfos[0].outAmount : ''}
+      </Text>
       <StatusBar style="auto" />
-    </View>
+    </ScrollView>
   );
 }
 
