@@ -15,5 +15,11 @@ Checkout [Jupiter Core Example](https://github.com/mercurial-finance/jupiter-cor
 
 ## Getting Started
 1. Checkout Expo getting started docs [here](https://docs.expo.dev/get-started/installation/) and setup your iOS or Android sims
-2. `npm i`
-3. `npm start`
+2. Add a `.env` to root
+3. Populate these value
+```
+cluster=devnet
+WALLET_PRIVATE_KEY=<wallet private key> ## or set it up in src/constants
+```
+4. `npm i`
+5. `npm start`
