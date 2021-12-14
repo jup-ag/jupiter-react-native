@@ -9,11 +9,15 @@
 <br/>
 
 ## Integrate with React instead?
-The quickest way to integrate Jupiter with your UI, use [Jupiter React Hook instead](https://www.npmjs.com/package/@jup-ag/react-hook)
+The quickest way to integrate Jupiter with your UI, use [Jupiter React Hook](https://www.npmjs.com/package/@jup-ag/react-hook) instead
 ## NodeJS or building your own library??
 Checkout [Jupiter Core Example](https://github.com/mercurial-finance/jupiter-core-example)
 
 ## Getting Started
+ In `App.tsx`, you are greeted with `<CoreExample />` and `<HookExample />`.
+ - `<CoreExample />` is a simple example of how you can interface with Jupiter Core library
+ - `<HookExample />` is a abstracted interface of `Jupiter Core Library` via [@jup-ag/react-hook](https://www.npmjs.com/package/@jup-ag/react-hook)`.
+
 1. Checkout Expo getting started docs [here](https://docs.expo.dev/get-started/installation/) and setup your iOS or Android sims
 2. Add a `.env` to root
 3. Populate these value
